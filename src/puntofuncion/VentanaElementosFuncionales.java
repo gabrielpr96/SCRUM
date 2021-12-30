@@ -5,6 +5,9 @@
  */
 package puntofuncion;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,11 +17,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VentanaElementosFuncionales extends javax.swing.JFrame {
     DefaultTableModel modeloTElementos = new DefaultTableModel();
+    private ManejaElementoFuncional me;
     /**
      * Creates new form VentanaElementosFuncionales
      */
     public VentanaElementosFuncionales() {
         initComponents();
+        me = new ManejaElementoFuncional();
         this.RellenaCaja();
         JTable tElementos = new JTable(modeloTElementos);
         this.dibujarTabla();
@@ -46,6 +51,27 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         jTableElementos.getTableHeader().setResizingAllowed(false);
     }
 
+    
+    public void llenarTabla(){
+        jTableElementos.setModel(modeloTElementos);
+        ArrayList<ElementoFuncional> e = me.elementos();
+        int numRegistros=e.size();
+        Object [] columna = new Object[4];
+        for(int i=0; i<numRegistros; i++){
+            columna[0]=e.get(i).getElemento();
+            columna[1]=e.get(i).getNombre();
+            columna[2]=e.get(i).getNFich();
+            columna[3]=e.get(i).getNDat();
+            modeloTElementos.addRow(columna);
+        }
+    }
+    
+    public void vaciatablaElementos(){
+        while(modeloTElementos.getRowCount()>0){
+            modeloTElementos.removeRow(0);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +92,7 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         jButtonAñadir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableElementos = new javax.swing.JTable();
+        jButtonComplejidad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,6 +131,13 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableElementos);
 
+        jButtonComplejidad.setText("Complejidad");
+        jButtonComplejidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonComplejidadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,7 +162,8 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextFieldFicheros)
                                 .addComponent(jTextFieldDatos))))
-                    .addComponent(jButtonAñadir))
+                    .addComponent(jButtonAñadir)
+                    .addComponent(jButtonComplejidad))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(126, 126, 126))
@@ -156,7 +191,9 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                             .addComponent(jLabelDatos)
                             .addComponent(jTextFieldDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonAñadir)))
+                        .addComponent(jButtonAñadir)
+                        .addGap(104, 104, 104)
+                        .addComponent(jButtonComplejidad)))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
 
@@ -168,11 +205,26 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxElementosActionPerformed
 
     private void jButtonAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirActionPerformed
-        String elemento = this.jComboBoxElementos.getName();
+
+        String elemento = (String)this.jComboBoxElementos.getSelectedItem();
         String tipo = this.jTextFieldNombre.getText();
         int fich = Integer.parseInt(this.jTextFieldFicheros.getText());
         int datos = Integer.parseInt(this.jTextFieldDatos.getText());
+        
+        ElementoFuncional e = new ElementoFuncional(elemento, tipo, fich, datos);
+        me.anadeElemento(e);
+        
+        this.vaciatablaElementos();
+        this.llenarTabla();
     }//GEN-LAST:event_jButtonAñadirActionPerformed
+
+    private void jButtonComplejidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComplejidadActionPerformed
+        int indice = this.jTableElementos.getSelectedRow();
+        String string = me.getComplejidadElemento(indice);
+        System.out.println(string);
+        String mensaje = "La complejidad del elemento funcional es " + string;
+        JOptionPane.showMessageDialog(null, mensaje);
+    }//GEN-LAST:event_jButtonComplejidadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,6 +263,7 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAñadir;
+    private javax.swing.JButton jButtonComplejidad;
     private javax.swing.JComboBox<String> jComboBoxElementos;
     private javax.swing.JLabel jLabelDatos;
     private javax.swing.JLabel jLabelElemento;
