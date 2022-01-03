@@ -31,10 +31,10 @@
                           <Component id="jLabelFicheros" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelDatos" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldDatos" pref="100" max="32767" attributes="0"/>
-                          <Component id="jTextFieldFicheros" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTextFieldDatos" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="jTextFieldFicheros" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -42,8 +42,8 @@
                           <Component id="jLabelElemento" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jTextFieldNombre" min="-2" pref="100" max="-2" attributes="0"/>
                           <Component id="jComboBoxElementos" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
@@ -51,7 +51,11 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButtonAñadir" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonComplejidad" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jButtonComplejidad" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jButtonTablaPFNA" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="jLabelFicherosS" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelDatosS" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -62,7 +66,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="198" max="32767" attributes="0"/>
+              <EmptySpace pref="194" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
           </Group>
@@ -107,7 +111,10 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButtonAñadir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="jButtonComplejidad" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButtonComplejidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonTablaPFNA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="235" max="32767" attributes="0"/>
@@ -237,6 +244,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldDatosS">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonTablaPFNA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tabla PFNA"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTablaPFNAActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

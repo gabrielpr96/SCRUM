@@ -97,6 +97,7 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         jTextFieldFicherosS = new javax.swing.JTextField();
         jLabelDatosS = new javax.swing.JLabel();
         jTextFieldDatosS = new javax.swing.JTextField();
+        jButtonTablaPFNA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,6 +147,13 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
 
         jLabelDatosS.setText("Número de datos elementales (CE):");
 
+        jButtonTablaPFNA.setText("Tabla PFNA");
+        jButtonTablaPFNA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTablaPFNAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,29 +165,32 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelFicheros)
                             .addComponent(jLabelDatos))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(jTextFieldFicheros)))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldFicheros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelElemento)
                             .addComponent(jLabelNombre))
-                        .addGap(97, 97, 97)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(101, 101, 101)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxElementos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonAñadir)
-                            .addComponent(jButtonComplejidad)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonComplejidad)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonTablaPFNA))
                             .addComponent(jLabelFicherosS)
                             .addComponent(jLabelDatosS))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldFicherosS)
                             .addComponent(jTextFieldDatosS, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(126, 126, 126))
         );
@@ -216,7 +227,9 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonAñadir)
                         .addGap(48, 48, 48)
-                        .addComponent(jButtonComplejidad)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonComplejidad)
+                            .addComponent(jButtonTablaPFNA))))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
 
@@ -262,6 +275,10 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, mensaje);
     }//GEN-LAST:event_jButtonComplejidadActionPerformed
 
+    private void jButtonTablaPFNAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTablaPFNAActionPerformed
+        
+    }//GEN-LAST:event_jButtonTablaPFNAActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -300,6 +317,7 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAñadir;
     private javax.swing.JButton jButtonComplejidad;
+    private javax.swing.JButton jButtonTablaPFNA;
     private javax.swing.JComboBox<String> jComboBoxElementos;
     private javax.swing.JLabel jLabelDatos;
     private javax.swing.JLabel jLabelDatosS;
