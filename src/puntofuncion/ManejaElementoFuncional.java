@@ -209,7 +209,7 @@ public class ManejaElementoFuncional {
       T = TEE + TSE + TFLI + TFLE + TCE;
       System.out.println("EEs: " + EEs);
       System.out.println("EEm: " + EEm);
-      System.out.println("T: " + EEc);
+      System.out.println("T: " + T);
       System.out.println("SEs: " + SEs);
       System.out.println("SEm: " + SEm);
       System.out.println("TEE: " + TEE);
