@@ -93,6 +93,10 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableElementos = new javax.swing.JTable();
         jButtonComplejidad = new javax.swing.JButton();
+        jLabelFicherosS = new javax.swing.JLabel();
+        jTextFieldFicherosS = new javax.swing.JTextField();
+        jLabelDatosS = new javax.swing.JLabel();
+        jTextFieldDatosS = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -138,33 +142,44 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
             }
         });
 
+        jLabelFicherosS.setText("Número de ficheros relacionados (CE):");
+
+        jLabelDatosS.setText("Número de datos elementales (CE):");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelElemento)
-                                .addComponent(jLabelNombre))
-                            .addGap(76, 76, 76)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBoxElementos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelFicheros)
-                                .addComponent(jLabelDatos))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldFicheros)
-                                .addComponent(jTextFieldDatos))))
-                    .addComponent(jButtonAñadir)
-                    .addComponent(jButtonComplejidad))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelFicheros)
+                            .addComponent(jLabelDatos))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(jTextFieldFicheros)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelElemento)
+                            .addComponent(jLabelNombre))
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxElementos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonAñadir)
+                            .addComponent(jButtonComplejidad)
+                            .addComponent(jLabelFicherosS)
+                            .addComponent(jLabelDatosS))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldFicherosS)
+                            .addComponent(jTextFieldDatosS, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(126, 126, 126))
         );
@@ -190,9 +205,17 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelDatos)
                             .addComponent(jTextFieldDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelFicherosS)
+                            .addComponent(jTextFieldFicherosS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDatosS)
+                            .addComponent(jTextFieldDatosS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jButtonAñadir)
-                        .addGap(104, 104, 104)
+                        .addGap(48, 48, 48)
                         .addComponent(jButtonComplejidad)))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
@@ -205,17 +228,28 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxElementosActionPerformed
 
     private void jButtonAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirActionPerformed
-
+        
         String elemento = (String)this.jComboBoxElementos.getSelectedItem();
         String tipo = this.jTextFieldNombre.getText();
         int fich = Integer.parseInt(this.jTextFieldFicheros.getText());
         int datos = Integer.parseInt(this.jTextFieldDatos.getText());
         
-        ElementoFuncional e = new ElementoFuncional(elemento, tipo, fich, datos);
-        me.anadeElemento(e);
-        
+        if(elemento.equals("CE")){
+            int fichS = Integer.parseInt(this.jTextFieldFicherosS.getText());
+            int datosS = Integer.parseInt(this.jTextFieldDatosS.getText());
+            ElementoFuncional e = new ElementoFuncional(elemento, tipo, fich, datos);
+            ElementoFuncional eS = new ElementoFuncional(elemento, tipo, fichS, datosS);
+            me.anadeElemento(e);
+            me.anadeElemento(eS);
+        }
+        else{
+            ElementoFuncional e = new ElementoFuncional(elemento, tipo, fich, datos);
+            me.anadeElemento(e); 
+        }
+
         this.vaciatablaElementos();
         this.llenarTabla();
+
     }//GEN-LAST:event_jButtonAñadirActionPerformed
 
     private void jButtonComplejidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComplejidadActionPerformed
@@ -223,6 +257,8 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         String string = me.getComplejidadElemento(indice);
         System.out.println(string);
         String mensaje = "La complejidad del elemento funcional es " + string;
+        int EEs = 0, EEm = 0, EEc = 0, Es = 0, SEm = 0, SEc = 0, FLIs = 0, FLIm = 0, FLIc = 0, FLEs = 0, FLEm = 0, FLEc = 0, CEs = 0, CEm = 0, CEc = 0, TEE = 0, TSE = 0, TFLI = 0, TFLE = 0, TCE = 0, T = 0;
+        me.getPFNA(EEs, EEm, EEc, Es, SEm, SEc, FLIs, FLIm, FLIc, FLEs, FLEm, FLEc, CEs, CEm, CEc, TEE, TSE, TFLI, TFLE, TCE, T);
         JOptionPane.showMessageDialog(null, mensaje);
     }//GEN-LAST:event_jButtonComplejidadActionPerformed
 
@@ -266,13 +302,17 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     private javax.swing.JButton jButtonComplejidad;
     private javax.swing.JComboBox<String> jComboBoxElementos;
     private javax.swing.JLabel jLabelDatos;
+    private javax.swing.JLabel jLabelDatosS;
     private javax.swing.JLabel jLabelElemento;
     private javax.swing.JLabel jLabelFicheros;
+    private javax.swing.JLabel jLabelFicherosS;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableElementos;
     private javax.swing.JTextField jTextFieldDatos;
+    private javax.swing.JTextField jTextFieldDatosS;
     private javax.swing.JTextField jTextFieldFicheros;
+    private javax.swing.JTextField jTextFieldFicherosS;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }
