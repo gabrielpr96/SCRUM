@@ -276,7 +276,8 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonComplejidadActionPerformed
 
     private void jButtonTablaPFNAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTablaPFNAActionPerformed
-        
+        VentanaTablaPFNA vtp = new VentanaTablaPFNA();
+        vtp.setVisible(true);
     }//GEN-LAST:event_jButtonTablaPFNAActionPerformed
 
     /**
