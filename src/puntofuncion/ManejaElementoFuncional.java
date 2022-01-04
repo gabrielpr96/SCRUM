@@ -202,12 +202,34 @@ public class ManejaElementoFuncional {
                 i++;
             }
         }
+      
+      EEs = EEs*3;
+      EEm = EEm*4;
+      EEc = EEc*6;
+      
+      SEs = SEs*4;
+      SEm = SEm*5;
+      SEc = SEc*7;
+      
+      FLIs = FLIs*7;
+      FLIm = FLIm*10;
+      FLIc = FLIc*15;
+      
+      FLEs = FLEs*5;
+      FLEm = FLEm*7;
+      FLEc = FLEc*10;
+      
+      CEs = CEs*3;
+      CEm = CEm*4;
+      CEc = CEc*6;
+      
       TEE = EEs + EEc + EEm;
       TSE = SEs + SEc + SEm;
       TFLI = FLIs + FLIc + FLIm;
       TFLE = FLEs + FLEc + FLEm;
       TCE = CEs + CEc + CEm;
       T = TEE + TSE + TFLI + TFLE + TCE;
+      
       PFNA[0] = EEs;
       PFNA[1] = EEm;
       PFNA[2] = EEc;
@@ -229,6 +251,7 @@ public class ManejaElementoFuncional {
       PFNA[18] = CEc;
       PFNA[19] = TCE;
       PFNA[20] = T;
+      
       return PFNA;
     }
     

@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class VentanaTablaPFNA extends javax.swing.JFrame {
     DefaultTableModel modeloTPFNA = new DefaultTableModel();
     private final ManejaElementoFuncional me;
+    private int resultado;
     /**
      * Creates new form VentanaTablaPFNA
      */
@@ -44,12 +45,17 @@ public class VentanaTablaPFNA extends javax.swing.JFrame {
         int[]tmp = new int[21];
         tmp = me.getPFNA();
         jTablePFNA.setModel(modeloTPFNA);
-        modeloTPFNA.addRow(new Object[]{"EE", tmp[0], tmp[1], tmp[2], tmp[3]});
-        modeloTPFNA.addRow(new Object[]{"SE", tmp[4], tmp[5], tmp[6], tmp[7]});
-        modeloTPFNA.addRow(new Object[]{"FLI", tmp[8], tmp[9], tmp[10], tmp[11]});
-        modeloTPFNA.addRow(new Object[]{"FLE", tmp[12], tmp[13], tmp[14], tmp[15]});
-        modeloTPFNA.addRow(new Object[]{"CE", tmp[16], tmp[17], tmp[18], tmp[19]});
+        modeloTPFNA.addRow(new Object[]{"EE", tmp[0] + " x 3", tmp[1] + " x 4", tmp[2] + " x 6", tmp[3]});
+        modeloTPFNA.addRow(new Object[]{"SE", tmp[4] + " x 4", tmp[5] + " x 5", tmp[6] + " x 7", tmp[7]});
+        modeloTPFNA.addRow(new Object[]{"FLI", tmp[8] + " x 7", tmp[9] + " x 10", tmp[10] + " x 15", tmp[11]});
+        modeloTPFNA.addRow(new Object[]{"FLE", tmp[12] + " x 5", tmp[13] + " x 7", tmp[14] + " x 10", tmp[15]});
+        modeloTPFNA.addRow(new Object[]{"CE", tmp[16] + " x 3", tmp[17] + " x 4", tmp[18] + " x 6", tmp[19]});
         modeloTPFNA.addRow(new Object[]{"TOTAL", null, null, null, tmp[20]});
+        this.resultado = tmp[20];
+    }
+    
+    public int getResultado(){
+        return resultado;
     }
 
     /**
@@ -92,8 +98,8 @@ public class VentanaTablaPFNA extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(535, Short.MAX_VALUE))
         );
 
         pack();
