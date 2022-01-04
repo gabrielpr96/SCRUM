@@ -98,6 +98,7 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         jLabelDatosS = new javax.swing.JLabel();
         jTextFieldDatosS = new javax.swing.JTextField();
         jButtonTablaPFNA = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,6 +155,13 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Tabla FA");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -180,12 +188,14 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonAñadir)
+                            .addComponent(jLabelFicherosS)
+                            .addComponent(jLabelDatosS)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButtonComplejidad)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonTablaPFNA))
-                            .addComponent(jLabelFicherosS)
-                            .addComponent(jLabelDatosS))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButtonTablaPFNA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldFicherosS)
@@ -229,7 +239,9 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonComplejidad)
-                            .addComponent(jButtonTablaPFNA))))
+                            .addComponent(jButtonTablaPFNA))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
 
@@ -280,6 +292,11 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         vtp.setVisible(true);
     }//GEN-LAST:event_jButtonTablaPFNAActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        VentanaTablaFA vfa = new VentanaTablaFA();
+        vfa.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -316,6 +333,7 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAñadir;
     private javax.swing.JButton jButtonComplejidad;
     private javax.swing.JButton jButtonTablaPFNA;
