@@ -139,8 +139,9 @@ public class ManejaElementoFuncional {
         return sol;
     }
     
-    public void getPFNA(int EEs, int EEm, int EEc, int SEs, int SEm, int SEc, int FLIs, int FLIm, int FLIc, int FLEs, int FLEm, int FLEc, int CEs, int CEm, int CEc, int TEE, int TSE, int TFLI, int TFLE, int TCE, int T){
-      EEs = 0; EEm = 0; EEc = 0; SEs = 0; SEm = 0; SEc = 0; FLIs = 0; FLIm = 0; FLIc = 0; FLEs = 0; FLEm = 0; FLEc = 0; CEs = 0; CEm = 0; CEc = 0; TEE = 0; TSE = 0;
+    public int[] getPFNA(){
+      int[] PFNA = new int[21];
+      int EEs = 0; int EEm = 0; int EEc = 0; int SEs = 0; int SEm = 0; int SEc = 0; int FLIs = 0; int FLIm = 0; int FLIc = 0; int FLEs = 0; int FLEm = 0; int FLEc = 0; int CEs = 0; int TFLE = 0; int CEm = 0; int CEc = 0; int TEE = 0; int TFLI = 0; int TSE = 0; int T = 0; int TCE = 0;
       String complejidad;
       for(int i = 0; i < elemento.size(); i++){
           complejidad = this.getComplejidadElemento(i);
@@ -207,13 +208,28 @@ public class ManejaElementoFuncional {
       TFLE = FLEs + FLEc + FLEm;
       TCE = CEs + CEc + CEm;
       T = TEE + TSE + TFLI + TFLE + TCE;
-      System.out.println("EEs: " + EEs);
-      System.out.println("EEm: " + EEm);
-      System.out.println("T: " + T);
-      System.out.println("SEs: " + SEs);
-      System.out.println("SEm: " + SEm);
-      System.out.println("TEE: " + TEE);
-
+      PFNA[0] = EEs;
+      PFNA[1] = EEm;
+      PFNA[2] = EEc;
+      PFNA[3] = TEE;
+      PFNA[4] = SEs;
+      PFNA[5] = SEm;
+      PFNA[6] = SEc;
+      PFNA[7] = TSE;
+      PFNA[8] = FLIs;
+      PFNA[9] = FLIm;
+      PFNA[10] = FLIc;
+      PFNA[11] = TFLI;
+      PFNA[12] = FLEs;
+      PFNA[13] = FLEm;
+      PFNA[14] = FLEc;
+      PFNA[15] = TFLE;
+      PFNA[16] = CEs;
+      PFNA[17] = CEm;
+      PFNA[18] = CEc;
+      PFNA[19] = TCE;
+      PFNA[20] = T;
+      return PFNA;
     }
     
     private String esEE(int e){

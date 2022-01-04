@@ -5,17 +5,51 @@
  */
 package puntofuncion;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author gabir
  */
 public class VentanaTablaPFNA extends javax.swing.JFrame {
-
+    DefaultTableModel modeloTPFNA = new DefaultTableModel();
+    private final ManejaElementoFuncional me;
     /**
      * Creates new form VentanaTablaPFNA
      */
-    public VentanaTablaPFNA() {
+    public VentanaTablaPFNA(ManejaElementoFuncional m) {
         initComponents();
+        me = m;
+        this.dibujarTabla();
+        this.llenarTabla();
+    }
+    
+    public void dibujarTabla(){
+        this.jTablePFNA.setModel(modeloTPFNA);
+        String[]columnasTablaPFNA = {"Descripción", "Sencilla", "Media", "Compleja", "TOTAL P.F."};
+        modeloTPFNA.setColumnIdentifiers(columnasTablaPFNA);
+        
+        jTablePFNA.getColumnModel().getColumn(0).setPreferredWidth(65);
+        jTablePFNA.getColumnModel().getColumn(1).setPreferredWidth(25);
+        jTablePFNA.getColumnModel().getColumn(2).setPreferredWidth(25);
+        jTablePFNA.getColumnModel().getColumn(3).setPreferredWidth(25);
+        jTablePFNA.getColumnModel().getColumn(4).setPreferredWidth(25);
+        
+        jTablePFNA.getTableHeader().setResizingAllowed(false);
+    }
+    
+    public void llenarTabla(){
+        //int EEs = 0, EEm = 0, EEc = 0, SEs = 0, SEm = 0, SEc = 0, FLIs = 0, FLIm = 0, FLIc = 0, FLEs = 0, FLEm = 0, FLEc = 0, CEs = 0, CEm = 0, CEc = 0, TEE = 0, TSE = 0, TFLI = 0, TFLE = 0, TCE = 0, T = 0;
+        int[]tmp = new int[21];
+        tmp = me.getPFNA();
+        jTablePFNA.setModel(modeloTPFNA);
+        modeloTPFNA.addRow(new Object[]{"EE", tmp[0], tmp[1], tmp[2], tmp[3]});
+        modeloTPFNA.addRow(new Object[]{"SE", tmp[4], tmp[5], tmp[6], tmp[7]});
+        modeloTPFNA.addRow(new Object[]{"FLI", tmp[8], tmp[9], tmp[10], tmp[11]});
+        modeloTPFNA.addRow(new Object[]{"FLE", tmp[12], tmp[13], tmp[14], tmp[15]});
+        modeloTPFNA.addRow(new Object[]{"CE", tmp[16], tmp[17], tmp[18], tmp[19]});
+        modeloTPFNA.addRow(new Object[]{"TOTAL", null, null, null, tmp[20]});
     }
 
     /**
@@ -27,17 +61,39 @@ public class VentanaTablaPFNA extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTablePFNA = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTablePFNA.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTablePFNA);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(298, 298, 298)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(330, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,5 +135,7 @@ public class VentanaTablaPFNA extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTablePFNA;
     // End of variables declaration//GEN-END:variables
 }

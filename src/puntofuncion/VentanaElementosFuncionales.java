@@ -270,13 +270,12 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         String string = me.getComplejidadElemento(indice);
         System.out.println(string);
         String mensaje = "La complejidad del elemento funcional es " + string;
-        int EEs = 0, EEm = 0, EEc = 0, Es = 0, SEm = 0, SEc = 0, FLIs = 0, FLIm = 0, FLIc = 0, FLEs = 0, FLEm = 0, FLEc = 0, CEs = 0, CEm = 0, CEc = 0, TEE = 0, TSE = 0, TFLI = 0, TFLE = 0, TCE = 0, T = 0;
-        me.getPFNA(EEs, EEm, EEc, Es, SEm, SEc, FLIs, FLIm, FLIc, FLEs, FLEm, FLEc, CEs, CEm, CEc, TEE, TSE, TFLI, TFLE, TCE, T);
+        me.getPFNA();
         JOptionPane.showMessageDialog(null, mensaje);
     }//GEN-LAST:event_jButtonComplejidadActionPerformed
 
     private void jButtonTablaPFNAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTablaPFNAActionPerformed
-        VentanaTablaPFNA vtp = new VentanaTablaPFNA();
+        VentanaTablaPFNA vtp = new VentanaTablaPFNA(me);
         vtp.setVisible(true);
     }//GEN-LAST:event_jButtonTablaPFNAActionPerformed
 
