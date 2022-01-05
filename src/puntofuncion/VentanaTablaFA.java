@@ -12,9 +12,31 @@ public class VentanaTablaFA extends javax.swing.JFrame {
 
     /**
      * Creates new form VentanaTablaFA
-     */
+     */  
+    int resultado = 0;
+    
     public VentanaTablaFA() {
         initComponents();
+    }
+    
+    public int resultado(){
+
+        resultado = Integer.parseInt(txt1.getText())+
+        Integer.parseInt(txt2.getText())+
+        Integer.parseInt(txt3.getText())+
+        Integer.parseInt(txt4.getText())+
+        Integer.parseInt(txt5.getText())+
+        Integer.parseInt(txt6.getText())+
+        Integer.parseInt(txt7.getText())+
+        Integer.parseInt(txt8.getText())+
+        Integer.parseInt(txt9.getText())+
+        Integer.parseInt(txt10.getText())+
+        Integer.parseInt(txt11.getText())+
+        Integer.parseInt(txt12.getText())+
+        Integer.parseInt(txt13.getText())+
+        Integer.parseInt(txt14.getText());
+
+        return resultado;
     }
 
     /**
@@ -356,22 +378,8 @@ public class VentanaTablaFA extends javax.swing.JFrame {
     }//GEN-LAST:event_txt10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int resultado = 0;
-        resultado = Integer.parseInt(txt1.getText())+
-        Integer.parseInt(txt2.getText())+
-        Integer.parseInt(txt3.getText())+
-        Integer.parseInt(txt4.getText())+
-        Integer.parseInt(txt5.getText())+
-        Integer.parseInt(txt6.getText())+
-        Integer.parseInt(txt7.getText())+
-        Integer.parseInt(txt8.getText())+
-        Integer.parseInt(txt9.getText())+
-        Integer.parseInt(txt10.getText())+
-        Integer.parseInt(txt11.getText())+
-        Integer.parseInt(txt12.getText())+
-        Integer.parseInt(txt13.getText())+
-        Integer.parseInt(txt14.getText());
-        String r = String.valueOf(resultado);
+        
+        String r = String.valueOf(this.resultado());
         txtResultado.setText(r);
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -17,7 +17,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VentanaElementosFuncionales extends javax.swing.JFrame {
     DefaultTableModel modeloTElementos = new DefaultTableModel();
+    VentanaTablaFA vfa = new VentanaTablaFA();
     private ManejaElementoFuncional me;
+    double fa;
     /**
      * Creates new form VentanaElementosFuncionales
      */
@@ -98,7 +100,9 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         jLabelDatosS = new javax.swing.JLabel();
         jTextFieldDatosS = new javax.swing.JTextField();
         jButtonTablaPFNA = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BtTablaFA = new javax.swing.JButton();
+        BtFA = new javax.swing.JButton();
+        BtPFA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,10 +159,24 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Tabla FA");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BtTablaFA.setText("Tabla FA");
+        BtTablaFA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BtTablaFAActionPerformed(evt);
+            }
+        });
+
+        BtFA.setText("FA");
+        BtFA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtFAActionPerformed(evt);
+            }
+        });
+
+        BtPFA.setText("PFA");
+        BtPFA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtPFAActionPerformed(evt);
             }
         });
 
@@ -195,7 +213,9 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButtonTablaPFNA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(BtTablaFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BtFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BtPFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldFicherosS)
@@ -241,7 +261,11 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                             .addComponent(jButtonComplejidad)
                             .addComponent(jButtonTablaPFNA))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(BtTablaFA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtFA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtPFA)))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
 
@@ -291,10 +315,25 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         vtp.setVisible(true);
     }//GEN-LAST:event_jButtonTablaPFNAActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        VentanaTablaFA vfa = new VentanaTablaFA();
-        vfa.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BtTablaFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtTablaFAActionPerformed
+       vfa.setVisible(true);
+    }//GEN-LAST:event_BtTablaFAActionPerformed
+
+    private void BtFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtFAActionPerformed
+        double sva = vfa.resultado;
+        fa=0.65+(0.01*sva);
+        String mensaje= "El resultado de FA es " + fa;
+        
+        JOptionPane.showMessageDialog(null,mensaje);
+    }//GEN-LAST:event_BtFAActionPerformed
+
+    private void BtPFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPFAActionPerformed
+        VentanaTablaPFNA vtp = new VentanaTablaPFNA(me);
+        double pfa = fa * vtp.getResultado();
+        String mensaje= "El resultado de PFA es " + pfa;
+        
+        JOptionPane.showMessageDialog(null,mensaje);
+    }//GEN-LAST:event_BtPFAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,7 +371,9 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BtFA;
+    private javax.swing.JButton BtPFA;
+    private javax.swing.JButton BtTablaFA;
     private javax.swing.JButton jButtonAñadir;
     private javax.swing.JButton jButtonComplejidad;
     private javax.swing.JButton jButtonTablaPFNA;
