@@ -19,7 +19,7 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     DefaultTableModel modeloTElementos = new DefaultTableModel();
     VentanaTablaFA vfa = new VentanaTablaFA();
     private ManejaElementoFuncional me;
-    double fa;
+    private double fa, pfa;
     /**
      * Creates new form VentanaElementosFuncionales
      */
@@ -27,6 +27,8 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         initComponents();
         me = new ManejaElementoFuncional();
         this.RellenaCaja();
+        this.RellenaCajaDuracion();
+        this.RellenaCajaEsfuerzo();
         JTable tElementos = new JTable(modeloTElementos);
         this.dibujarTabla();
     }
@@ -38,6 +40,41 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         this.jComboBoxElementos.addItem("CE");
         this.jComboBoxElementos.addItem("FLI");
         this.jComboBoxElementos.addItem("FLE");
+    }
+    
+    public void RellenaCajaEsfuerzo(){
+        this.jComboBoxEsfuerzo.removeAllItems();
+        this.jComboBoxEsfuerzo.addItem("MF");
+        this.jComboBoxEsfuerzo.addItem("MR");
+        this.jComboBoxEsfuerzo.addItem("PC");
+        this.jComboBoxEsfuerzo.addItem("Multi");
+        this.jComboBoxEsfuerzo.addItem("3GL");
+        this.jComboBoxEsfuerzo.addItem("4GL");
+        this.jComboBoxEsfuerzo.addItem("GenAp");
+        this.jComboBoxEsfuerzo.addItem("Mantenimiento");
+        this.jComboBoxEsfuerzo.addItem("Nuevo");
+        this.jComboBoxEsfuerzo.addItem("MF-3GL");
+        this.jComboBoxEsfuerzo.addItem("MF-4GL");
+        this.jComboBoxEsfuerzo.addItem("MF-GenAp");
+        this.jComboBoxEsfuerzo.addItem("MR-3GL");
+        this.jComboBoxEsfuerzo.addItem("MR-4GL");
+        this.jComboBoxEsfuerzo.addItem("PC-3GL");
+        this.jComboBoxEsfuerzo.addItem("PC-4GL");
+        this.jComboBoxEsfuerzo.addItem("Multi-3GL");
+        this.jComboBoxEsfuerzo.addItem("Multi-4GL");
+        this.jComboBoxEsfuerzo.addItem("MF-3GL-Mantenimiento");
+    }
+    
+    public void RellenaCajaDuracion(){
+        this.jComboBoxDuracion.removeAllItems();
+        this.jComboBoxDuracion.addItem("PC");
+        this.jComboBoxDuracion.addItem("Multi");
+        this.jComboBoxDuracion.addItem("4GL");
+        this.jComboBoxDuracion.addItem("Nuevo");
+        this.jComboBoxDuracion.addItem("PC-4GL");
+        this.jComboBoxDuracion.addItem("Multi-4GL");
+        this.jComboBoxDuracion.addItem("PC-4GL-Nuevo");
+        this.jComboBoxDuracion.addItem("Multi-4GL-Nuevo");
     }
     
     public void dibujarTabla(){
@@ -103,6 +140,12 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         BtTablaFA = new javax.swing.JButton();
         BtFA = new javax.swing.JButton();
         BtPFA = new javax.swing.JButton();
+        jComboBoxEsfuerzo = new javax.swing.JComboBox<>();
+        jComboBoxDuracion = new javax.swing.JComboBox<>();
+        jLabelEsfuerzo = new javax.swing.JLabel();
+        jLabelDuracion = new javax.swing.JLabel();
+        BtEsfuerzo = new javax.swing.JButton();
+        BtDuracion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,49 +223,87 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxEsfuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabelEsfuerzo.setText("Características para el esfuerzo:");
+
+        jLabelDuracion.setText("Características para la duración:");
+
+        BtEsfuerzo.setText("Calcular esfuerzo");
+        BtEsfuerzo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtEsfuerzoActionPerformed(evt);
+            }
+        });
+
+        BtDuracion.setText("Calcular duración");
+        BtDuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtDuracionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelFicheros)
-                            .addComponent(jLabelDatos))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldFicheros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelElemento)
-                            .addComponent(jLabelNombre))
-                        .addGap(101, 101, 101)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxElementos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonAñadir)
-                            .addComponent(jLabelFicherosS)
-                            .addComponent(jLabelDatosS)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonComplejidad)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButtonTablaPFNA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(BtTablaFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(BtFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(BtPFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldFicherosS)
-                            .addComponent(jTextFieldDatosS, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelFicheros)
+                                    .addComponent(jLabelDatos))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(35, 35, 35)
+                                        .addComponent(jTextFieldFicheros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelElemento)
+                                    .addComponent(jLabelNombre))
+                                .addGap(101, 101, 101)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxElementos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonAñadir)
+                                    .addComponent(jLabelFicherosS)
+                                    .addComponent(jLabelDatosS)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonComplejidad)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jButtonTablaPFNA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(BtTablaFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(BtFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(BtPFA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldFicherosS)
+                                    .addComponent(jTextFieldDatosS, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxEsfuerzo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxDuracion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(126, 126, 126))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelDuracion)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelEsfuerzo)
+                            .addComponent(BtEsfuerzo)
+                            .addComponent(BtDuracion))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +347,19 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                         .addComponent(BtFA)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtPFA)))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelEsfuerzo)
+                    .addComponent(jComboBoxEsfuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelDuracion)
+                    .addComponent(jComboBoxDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(BtEsfuerzo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BtDuracion)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
@@ -329,11 +422,29 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
 
     private void BtPFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPFAActionPerformed
         VentanaTablaPFNA vtp = new VentanaTablaPFNA(me);
-        double pfa = fa * vtp.getResultado();
+        pfa = fa * vtp.getResultado();
         String mensaje= "El resultado de PFA es " + pfa;
         
         JOptionPane.showMessageDialog(null,mensaje);
     }//GEN-LAST:event_BtPFAActionPerformed
+
+    private void BtEsfuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEsfuerzoActionPerformed
+        float valores[] = new float[2];
+        valores =  me.tablaEsfuerzo((String)jComboBoxEsfuerzo.getSelectedItem());
+        float esfuerzo = (float) (valores[0]*Math.pow(pfa,valores[1]));
+        String mensaje = "El esfuerzo es " + esfuerzo;
+        
+        JOptionPane.showMessageDialog(null,mensaje);
+    }//GEN-LAST:event_BtEsfuerzoActionPerformed
+
+    private void BtDuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtDuracionActionPerformed
+        float valores[] = new float[2];
+        valores =  me.tablaDuracion((String)jComboBoxDuracion.getSelectedItem());
+        float duracion = (float) (valores[0]*Math.pow(pfa,valores[1]));
+        String mensaje = "La duración es " + duracion;
+        
+        JOptionPane.showMessageDialog(null,mensaje);
+    }//GEN-LAST:event_BtDuracionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,16 +482,22 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtDuracion;
+    private javax.swing.JButton BtEsfuerzo;
     private javax.swing.JButton BtFA;
     private javax.swing.JButton BtPFA;
     private javax.swing.JButton BtTablaFA;
     private javax.swing.JButton jButtonAñadir;
     private javax.swing.JButton jButtonComplejidad;
     private javax.swing.JButton jButtonTablaPFNA;
+    private javax.swing.JComboBox<String> jComboBoxDuracion;
     private javax.swing.JComboBox<String> jComboBoxElementos;
+    private javax.swing.JComboBox<String> jComboBoxEsfuerzo;
     private javax.swing.JLabel jLabelDatos;
     private javax.swing.JLabel jLabelDatosS;
+    private javax.swing.JLabel jLabelDuracion;
     private javax.swing.JLabel jLabelElemento;
+    private javax.swing.JLabel jLabelEsfuerzo;
     private javax.swing.JLabel jLabelFicheros;
     private javax.swing.JLabel jLabelFicherosS;
     private javax.swing.JLabel jLabelNombre;
