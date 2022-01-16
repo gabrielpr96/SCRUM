@@ -15,12 +15,13 @@ import javax.swing.table.DefaultTableModel;
 public class VentanaTablaPFNA extends javax.swing.JFrame {
     DefaultTableModel modeloTPFNA = new DefaultTableModel();
     private final ManejaElementoFuncional me;
-    private int resultado;
+    private int resultado = -1;
     /**
      * Creates new form VentanaTablaPFNA
      */
     public VentanaTablaPFNA(ManejaElementoFuncional m) {
         initComponents();
+        setLocationRelativeTo(null);
         me = m;
         this.dibujarTabla();
         this.llenarTabla();
@@ -45,11 +46,11 @@ public class VentanaTablaPFNA extends javax.swing.JFrame {
         int[]tmp = new int[21];
         tmp = me.getPFNA();
         jTablePFNA.setModel(modeloTPFNA);
-        modeloTPFNA.addRow(new Object[]{"EE", tmp[0] + " x 3", tmp[1] + " x 4", tmp[2] + " x 6", tmp[3]});
-        modeloTPFNA.addRow(new Object[]{"SE", tmp[4] + " x 4", tmp[5] + " x 5", tmp[6] + " x 7", tmp[7]});
-        modeloTPFNA.addRow(new Object[]{"FLI", tmp[8] + " x 7", tmp[9] + " x 10", tmp[10] + " x 15", tmp[11]});
-        modeloTPFNA.addRow(new Object[]{"FLE", tmp[12] + " x 5", tmp[13] + " x 7", tmp[14] + " x 10", tmp[15]});
-        modeloTPFNA.addRow(new Object[]{"CE", tmp[16] + " x 3", tmp[17] + " x 4", tmp[18] + " x 6", tmp[19]});
+        modeloTPFNA.addRow(new Object[]{"EE", tmp[0]/3 + " x 3", tmp[1]/4 + " x 4", tmp[2]/6 + " x 6", tmp[3]});
+        modeloTPFNA.addRow(new Object[]{"SE", tmp[4]/4 + " x 4", tmp[5]/5 + " x 5", tmp[6]/7 + " x 7", tmp[7]});
+        modeloTPFNA.addRow(new Object[]{"FLI", tmp[8]/7 + " x 7", tmp[9]/10 + " x 10", tmp[10]/15 + " x 15", tmp[11]});
+        modeloTPFNA.addRow(new Object[]{"FLE", tmp[12]/5 + " x 5", tmp[13]/7 + " x 7", tmp[14]/10 + " x 10", tmp[15]});
+        modeloTPFNA.addRow(new Object[]{"CE", tmp[16]/3 + " x 3", tmp[17]/4 + " x 4", tmp[18]/6 + " x 6", tmp[19]});
         modeloTPFNA.addRow(new Object[]{"TOTAL", null, null, null, tmp[20]});
         this.resultado = tmp[20];
     }
@@ -70,7 +71,7 @@ public class VentanaTablaPFNA extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablePFNA = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTablePFNA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,16 +91,16 @@ public class VentanaTablaPFNA extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(298, 298, 298)
+                .addGap(177, 177, 177)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(78, 78, 78)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(535, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         pack();

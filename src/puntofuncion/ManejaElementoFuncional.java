@@ -26,6 +26,16 @@ public class ManejaElementoFuncional {
         elemento.add(e);
     }
     
+    public void eliminarElemento(int index){
+        if(elemento.get(index).getElemento().equals("CE")){
+            elemento.remove(index);
+            elemento.remove(index);
+        }
+        else{
+            elemento.remove(index);
+        }
+    }
+    
     public String getComplejidadElemento(int e){
         String eSeleccionado = elemento.get(e).getElemento();
         String sol = null;

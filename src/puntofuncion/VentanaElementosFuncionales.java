@@ -19,18 +19,20 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     DefaultTableModel modeloTElementos = new DefaultTableModel();
     VentanaTablaFA vfa = new VentanaTablaFA();
     private ManejaElementoFuncional me;
-    private double fa, pfa;
+    private double fa = -1, pfa;
     /**
      * Creates new form VentanaElementosFuncionales
      */
     public VentanaElementosFuncionales() {
         initComponents();
+        setLocationRelativeTo(null);
         me = new ManejaElementoFuncional();
         this.RellenaCaja();
         this.RellenaCajaDuracion();
         this.RellenaCajaEsfuerzo();
         JTable tElementos = new JTable(modeloTElementos);
         this.dibujarTabla();
+        
     }
     
     public void RellenaCaja(){
@@ -146,6 +148,7 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         jLabelDuracion = new javax.swing.JLabel();
         BtEsfuerzo = new javax.swing.JButton();
         BtDuracion = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -202,7 +205,7 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
             }
         });
 
-        BtTablaFA.setText("Tabla FA");
+        BtTablaFA.setText("Tabla SVA");
         BtTablaFA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtTablaFAActionPerformed(evt);
@@ -245,6 +248,13 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
             }
         });
 
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -275,7 +285,10 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                                     .addComponent(jComboBoxElementos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonAñadir)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonAñadir)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButtonEliminar))
                                     .addComponent(jLabelFicherosS)
                                     .addComponent(jLabelDatosS)
                                     .addGroup(layout.createSequentialGroup()
@@ -336,7 +349,9 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
                             .addComponent(jLabelDatosS)
                             .addComponent(jTextFieldDatosS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonAñadir)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAñadir)
+                            .addComponent(jButtonEliminar))
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonComplejidad)
@@ -388,7 +403,13 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
             ElementoFuncional e = new ElementoFuncional(elemento, tipo, fich, datos);
             me.anadeElemento(e); 
         }
-
+        
+        this.jTextFieldNombre.setText("");
+        this.jTextFieldDatos.setText("");
+        this.jTextFieldFicheros.setText("");
+        this.jTextFieldDatosS.setText("");
+        this.jTextFieldFicherosS.setText("");
+        
         this.vaciatablaElementos();
         this.llenarTabla();
 
@@ -414,18 +435,32 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
 
     private void BtFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtFAActionPerformed
         double sva = vfa.resultado;
+        if(sva == -1){
+            String mensaje = "Hay que completar la tabla FA previamente.";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        else{
         fa=0.65+(0.01*sva);
         String mensaje= "El resultado de FA es " + fa;
         
-        JOptionPane.showMessageDialog(null,mensaje);
+        JOptionPane.showMessageDialog(null,mensaje);  
+        }
     }//GEN-LAST:event_BtFAActionPerformed
 
     private void BtPFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPFAActionPerformed
         VentanaTablaPFNA vtp = new VentanaTablaPFNA(me);
-        pfa = fa * vtp.getResultado();
-        String mensaje= "El resultado de PFA es " + pfa;
+        if(fa != -1 && vtp.getResultado() != -1){
+            pfa = fa * vtp.getResultado();
+            String mensaje= "El resultado de PFA es " + pfa;
+
+            JOptionPane.showMessageDialog(null,mensaje); 
+        }
+        else{
+            String mensaje = "Hay que llenar tablas PFNA, SVA y calcular FA.";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
         
-        JOptionPane.showMessageDialog(null,mensaje);
+
     }//GEN-LAST:event_BtPFAActionPerformed
 
     private void BtEsfuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEsfuerzoActionPerformed
@@ -445,6 +480,14 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(null,mensaje);
     }//GEN-LAST:event_BtDuracionActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        int indice = this.jTableElementos.getSelectedRow();
+        me.eliminarElemento(indice);
+        
+        this.vaciatablaElementos();
+        this.llenarTabla();
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -489,6 +532,7 @@ public class VentanaElementosFuncionales extends javax.swing.JFrame {
     private javax.swing.JButton BtTablaFA;
     private javax.swing.JButton jButtonAñadir;
     private javax.swing.JButton jButtonComplejidad;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonTablaPFNA;
     private javax.swing.JComboBox<String> jComboBoxDuracion;
     private javax.swing.JComboBox<String> jComboBoxElementos;

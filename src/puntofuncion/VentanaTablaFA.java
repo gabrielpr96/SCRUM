@@ -13,10 +13,11 @@ public class VentanaTablaFA extends javax.swing.JFrame {
     /**
      * Creates new form VentanaTablaFA
      */  
-    int resultado = 0;
+    int resultado = -1;
     
     public VentanaTablaFA() {
         initComponents();
+    setLocationRelativeTo(null);
     }
     
     public int resultado(){
@@ -101,7 +102,7 @@ public class VentanaTablaFA extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         txt1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("ATRIBUTOS");
 
